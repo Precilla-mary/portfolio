@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2 - Elective Selection</title>
+    <style>
+        body {
+            ffont-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('7480.jpg');
+            background-size: cover;
+            overflow: auto;
+        }
+        header {
+             background: #fad0c4;
+              color: #fff;
+               
+               text-align: center;
+               max-width: 700px;
+            margin: 20px auto;
+            
+            padding: 30px;
+            border-radius: 8px;
+            
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+              
+        }
+        header h1 {
+    margin:0.10px;
+    font-size: 2.5em;
+    padding: 0.10px;
+}
+
+     header nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 0.5em;
+    margin-bottom: 0em;
+    
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.2em 1em;
+    transition: background 0.3s;
+}
+
+header nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+}
+
+
+
+        h1 {
+            color: #fff;
+            text-align: center;
+            
+            font-size: 16px;
+          
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 30px;
+            overflow-y: auto;
+            border-radius: 8px;
+            
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 3px solid #fad0c4; /* Light pink border */
+        }
+
+        .radio-group, .checkbox-group {
+            margin: 20px 0;
+            padding: 20px;
+             /* Light pink background */
+            border: 2px solid #ff9a9e; /* Darker pink border */
+            border-radius: 8px;
+            position: relative;
+            
+        }
+        .radio-group legend {
+                   font-weight: bold;
+                 padding: 0 10px;
+                     font-size: 14px;
+                 text-align: center;
+              position: absolute;
+                 top: -10px;
+                 left: 10px;
+             background-color: #fff;
+              border: 1px solid #ff9a9e;
+                border-radius: 15px;
+           }
+          .checkbox-group legend {
+                   font-weight: bold;
+                 padding: 0 10px;
+                     font-size: 14px;
+                 text-align: center;
+              position: absolute;
+                 top: -10px;
+                 left: 10px;
+             background-color: #fff;
+              border: 1px solid #ff9a9e;
+                border-radius: 15px;
+           } 
+
+       section {
+    padding: 2em;
+    margin: 2em auto;
+    width: 80%;
+    max-width: 800px;
+    background: #fff;
+    border-radius: 10px;
+    border: 2px solid #ff9a9e;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+        label {
+            font-weight: bold;
+            font-size: 16px;
+            color: #333;
+            display: block;
+            margin-bottom: 10px;
+            display: flex;
+        }
+
+        input[type="radio"], input[type="checkbox"] {
+            margin-right: 10px;
+            accent-color: #ff9a9e;
+        }
+
+        button {
+            background-color: #ff9a9e;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 15px;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #ff6b81;
+            transform: scale(1.05);
+        }
+
+        .section-header {
+            font-size: 22px;
+            color: #ff9a9e;
+            margin-bottom: 15px;
+        }
+
+        .info-text {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 14px;
+            color: #aaa;
+        }
+
+        .footer a {
+            color: #ff9a9e;
+            text-decoration: none;
+        }
+        .button-container{
+          display: flex;
+          gap: 50px;
+        }
+    </style>
+    <script>
+      function toggleSelectAll() {
+      const selectAllCheckbox = document.getElementById('selectAll');
+      const checkboxes = document.querySelectorAll('.option');
+      
+      checkboxes.forEach((checkbox) => {
+        checkbox.checked = selectAllCheckbox.checked;
+      });
+    }
+
+    // Function to update the "Select All" checkbox based on individual selections
+    function updateSelectAll() {
+      const selectAllCheckbox = document.getElementById('selectAll');
+      const checkboxes = document.querySelectorAll('.option');
+      
+      const allChecked = Array.from(checkboxes).every((checkbox) => checkbox.checked);
+      selectAllCheckbox.checked = allChecked;
+    }
+    
+   function validateFieldsets() {
+    // Check if at least one checkbox is checked in each fieldset
+    const fieldsets = document.querySelectorAll('.checkbox-group');
+    
+    for (let fieldset of fieldsets) {
+        const checkboxes = fieldset.querySelectorAll('input[type="checkbox"]');
+        const checkedCheckboxes = Array.from(checkboxes).some((checkbox) => checkbox.checked);
+        
+        if (!checkedCheckboxes) {
+            const legendText = fieldset.querySelector('legend').textContent;
+                    alert(`Please select at least one option in "${legendText}".`);
+                    return false; // Prevent form submission if a fieldset has no selected checkboxes
+        }
+    }
+
+    return true; // Allow form submission if all fieldsets have at least one selected checkbox
+}
+
+        function handleSubmit(event) {
+            event.preventDefault();
+            if (validateFieldsets()) {
+                alert("Selection Successful!");
+                window.location.href = 'f.html';
+            }
+        }
+        function goBack() {
+            window.location.href = 'd2.html';
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Elective Subjects </h1>
+        <nav>
+            <ul>
+                <li><a href="#six">6th sem</a></li>
+                <li><a href="#seven">7th sem</a></li>
+                <li><a href="#eight">8th sem</a></li>
+               
+            </ul>
+        </nav>
+    </header>
+    <div class="form-container">
+        <p class="info-text">Please select your desired elective subject and activity for the semester.</p>
+
+        <form onsubmit="handleSubmit(event)">
+            
+            <section id="six">
+              
+            
+            <fieldset class="radio-group">
+                <legend>6th Sem Electives</legend>
+                <h3 class="section-header"></h3>
+                <label>
+                    <input type="radio" name="subject" value="CCA" required><span>CCA</span> 
+                </label>
+                <label>
+                    <input type="radio" name="subject" value="DataMining" required> <span>Data Mining</span>
+                </label>
+                <label>
+                    <input type="radio" name="subject" value="AdvancedJava" required> <span>AdvancedJava</span>
+                </label>
+            </fieldset>
+            </section>
+  
+           <section id="seven">
+             <div>
+             <fieldset class="checkbox-group">
+              <legend>7th Sem Electives I</legend>
+                <h3 class="section-header"></h3>
+                <label>
+                    <input type="checkbox" name="activity1" value="AICTE" > <span>Neural Networks</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="activity2" value="Seminar" ><span>Advanced DBMS</span>
+                </label>
+            </fieldset> </div>
+            
+            <fieldset class="checkbox-group">
+              <legend>7th Sem Electives II</legend>
+                <h3 class="section-header"></h3>
+                <label>
+                    <input type="checkbox" name="activity1" class="option" value="AICTE" onclick="updateSelectAll()" > <span>Storage Area Networks</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="activity1" class="option" value="Seminar" onclick="updateSelectAll()" ><span>Artifical Intelligence</span>
+                </label>
+                <label><input type="checkbox" id="selectAll" onclick="toggleSelectAll()"> Select All of the Above</label>
+      
+            </fieldset>
+           </section>
+            
+            <section id="eight">
+             <fieldset class="checkbox-group">
+              <legend>8th Sem Electives I</legend>
+                <h3 class="section-header"></h3>
+                <label>
+                    <input type="checkbox" name="activity1" value="AICTE" > <span>Microcontroller System</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="activity1" value="Seminar" ><span>VLSI and Algorithm</span>
+                </label>
+            </fieldset>
+            
+            <fieldset class="checkbox-group">
+              <legend>8th Sem Electives II</legend>
+                <h3 class="section-header"></h3>
+                <label>
+                    <input type="checkbox" name="activity1" value="AICTE" > <span>Software Testing</span>
+                </label>
+                <label>
+                    <input type="checkbox" name="activity1" value="Seminar" ><span> ARM Based design</span>
+                </label>
+            </fieldset>
+           </section>
+
+            <div class="button-container">
+                <!-- Back Button -->
+                <button type="button" class="back-button" onclick="goBack()">Back</button>
+
+                <!-- Submit Button -->
+                <button type="submit" >Submit</button></div>
+        </form>
+    </div>
+
+    <div class="footer">
+        <p>Need help? <a href="mailto:support@example.com">Contact Support</a></p>
+    </div>
+</body>
+</html>

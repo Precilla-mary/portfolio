@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Form</title>
+    <style>
+        
+
+      body {
+            ffont-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('7480.jpg');
+            background-size: cover;
+            border-radius: 200spx;
+        }
+
+        h1 {
+    color: #333;
+    text-align: center;
+    padding: 30px;
+    border-radius: 15px;
+    max-width: 700px; /* Matches the width of the form */
+    margin: 20px auto; /* Centers the header */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: 2px solid #fad0c4;
+   background: #fad0c4;
+              color: #fff; 
+          
+        }
+
+        .form-container {
+            max-width: 700px;
+            margin: 20px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            height: 80vh;
+             border: 2px solid #fad0c4; 
+        }
+
+        input[type="text"], input[type="email"], input[type="password"], select .scrollable-dropdown, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #fad0c4;
+            border-radius: 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: #fce0ec; /* Light pink field background */
+        }
+
+        input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, select:focus, textarea:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        input[type="submit"], button {
+            background-color: #ff9a9e; /* Light pink background for button */
+            color: white;
+            border: 2px solid #ff9a9e; /* Light pink border for button */
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 20px;
+            width: 100%;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        input[type="submit"]:hover, button:hover {
+            background-color: #ff6b81; /* Darker pink when hovering */
+            border-color: #ff6b81; /* Darker pink border when hovering */
+            transform: scale(1.05); /* Slightly enlarge the button on hover */
+        }
+
+        button {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        .highlight:hover {
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 15px;
+            border: 2px solid #ccc;
+            outline: none;
+            margin: 10px 0;
+            transition: all 0.3s ease;
+            background-color: #fce0ec; /* Light pink field background */
+        }
+
+        select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
+        .scrollable-dropdown {
+            height: auto;
+        }
+    </style>
+    <script>
+        function validateForm(event) {
+            event.preventDefault();
+            const name = event.target.name.value;
+            const phoneNumber = event.target.phno.value;
+            const usn = event.target.USN.value;
+
+            if (!/^[a-zA-Z ]{3,30}$/.test(name)) {
+                alert("Name must be 3-30 characters long and contain only letters and spaces.");
+                return;
+            }
+
+            // Validate phone number
+            if (!/^\d{10}$/.test(phoneNumber)) {
+                alert("Phone number must be exactly 10 digits.");
+                return false;
+            }
+         
+            if (!/^[A-Z0-9-]{9,}$/.test(usn)) {  
+                alert("Student USN is wrong");
+                return;
+                }
+            
+
+            alert("Next");
+            window.location.href = 'd4.html'; 
+        }
+    </script>
+</head>
+<body>
+    <h1>Student Detail</h1>
+    <div class="form-container">
+        <form onsubmit="validateForm(event)">
+            <label for="name">Student Name</label>
+            <input type="text" id="name" name="name" placeholder="Name" required class="highlight" required>
+
+            <label for="email">Student Email</label>
+            <input type="email" id="email" name="email" placeholder="Email" required class="highlight">
+
+            <label for="USN">Student USN</label>
+            <input type="text" id="USN" name="USN" placeholder="USN-1CD20CS122" required class="highlight" required>
+
+            <label for="dept">Student Dept</label>
+            <input type="text" id="dept" name="branch" placeholder="Dept" required class="highlight" required>
+
+             <label for="phno">Phone Number</label>
+             <input type="text" id="phno" name="phno" placeholder="Enter your phone number without 91+" required>
+
+            <label for="karnataka-districts">Select a District:</label>
+        <select id="karnataka-districts" name="district"  class="scrollable-dropdown" required>
+            <option value="bagalkot">Bagalkot</option>
+            <option value="ballari">Ballari</option>
+            <option value="belagavi">Belagavi</option>
+            <option value="bengaluru">Bengaluru</option>
+            <option value="bengalururural">Bengaluru Rural</option>
+            <option value="bidar">Bidar</option>
+            <option value="chamarajanagar">Chamarajanagar</option>
+            <option value="chikkaballapur">Chikkaballapur</option>
+            <option value="chikkamagaluru">Chikkamagaluru</option>
+            <option value="chitradurga">Chitradurga</option>
+            <option value="dakshinakannada">Dakshina Kannada</option>
+            <option value="davangere">Davangere</option>
+            <option value="dharwad">Dharwad</option>
+            <option value="gadag">Gadag</option>
+            <option value="hassan">Hassan</option>
+            <option value="haveri">Haveri</option>
+            <option value="kalaburagi">Kalaburagi</option>
+            <option value="kodagu">Kodagu</option>
+            <option value="kolar">Kolar</option>
+            <option value="koppal">Koppal</option>
+            <option value="mandya">Mandya</option>
+            <option value="mysuru">Mysuru</option>
+            <option value="raichur">Raichur</option>
+            <option value="ramanagara">Ramanagara</option>
+            <option value="shivamogga">Shivamogga</option>
+            <option value="tumakuru">Tumakuru</option>
+            <option value="udupi">Udupi</option>
+            <option value="uttarakannada">Uttara Kannada</option>
+            <option value="vijayapura">Vijayapura</option>
+            <option value="yadgir">Yadgir</option>
+        </select>
+
+            <label for="detail">Detailed Address</label>
+            <textarea name="message" id="detail" placeholder="Detailed address" class="highlight"></textarea>
+
+            <button type="submit">Next</button>
+        </form>
+    </div>
+</body>
+</html>
